@@ -1,0 +1,15 @@
+body {
+  font-family: monospace;
+}
+body input#input {
+  font-size: 100%;
+  font-family: monospace;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 80%;
+}
+body input#input:focus {
+  border: none;
+  outline: none;
+}
