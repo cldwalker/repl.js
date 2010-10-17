@@ -2,24 +2,12 @@
   var screen, input, spinner_id;
   var spinner = "<div id='%s' style='background: url(%i) no-repeat 0 center; "+
     "vertical-align: middle;'> &nbsp;</div>";
-  var jeval = function(input) {
-    try { var result = eval(input); }
-    catch(e) { var result = e.name + ': '+ e.message; }
-    if (typeof(result) == 'undefined') {
-      result = 'undefined';
-    } else {
-      result = result ? result.toString() : '';
-      result = $('<div/>').text(result).html();
-    }
-    return result;
-  };
 
   $.fn.repl = function(options) {
     options = $.extend({
       screen: '#screen',
       prompt: '&gt;&gt; ',
-      loop: function(line) { $.repl.logResult(jeval(line)); },
-      keys: true,
+      loop: function(line) { $.repl.logResult($.repl.eval(line)); },
       spinner: 'spinner.gif'
     }, options);
     input = $(this);
@@ -42,7 +30,7 @@
       input.val("").focus();
       return false;
     });
-    if (options.keys) {
+    if ($.hotkeys) {
       input.bind('keydown', 'ctrl+l', function() { screen.html(''); });
     }
 
@@ -59,6 +47,16 @@
       $('#'+spinner_id).remove();
       $.repl.log(str);
     },
-    eval: jeval
+    eval: function(input) {
+      try { var result = eval(input); }
+      catch(e) { var result = e.name + ': '+ e.message; }
+      if (typeof(result) == 'undefined') {
+        result = 'undefined';
+      } else {
+        result = result ? result.toString() : '';
+        result = $('<div/>').text(result).html();
+      }
+      return result;
+    }
   };
 })(jQuery);
