@@ -1,7 +1,7 @@
 body {
   font-family: monospace;
 }
-body input#input {
+body .repl_input {
   font-size: 100%;
   font-family: monospace;
   border: none;
@@ -9,7 +9,7 @@ body input#input {
   margin: 0;
   width: 80%;
 }
-body input#input:focus {
+body .repl_input:focus {
   border: none;
   outline: none;
 }

@@ -10,7 +10,9 @@
       loop: function(line) { $.repl.logResult($.repl.eval(line)); },
       spinner: 'spinner.gif'
     }, options);
+
     input = $(this);
+    input.addClass('repl_input');
     screen = $(options.screen);
     spinner_id = (this.selector + '_spinner').replace('#', '');
     spinner = spinner.replace('%s', spinner_id);
