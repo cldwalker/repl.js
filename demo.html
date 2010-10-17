@@ -5,14 +5,7 @@
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js' type='text/javascript'></script>
     <script src='jquery.repl.js' type='text/javascript'></script>
     <script type='text/javascript'>
-      $(document).ready( function(){
-        $('#input').repl({
-          loop: function(line) {
-            var result = $.repl.eval(line);
-            $.repl.logResult(result);
-          }
-        });
-      });
+      $(document).ready( function(){ $('#input').repl() });
     </script>
   </head>
   <body>
