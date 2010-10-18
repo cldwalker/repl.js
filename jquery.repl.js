@@ -3,6 +3,12 @@
   var spinner = "<div id='%s' style='background: url(%i) no-repeat 0 center; "+
     "vertical-align: middle;'> &nbsp;</div>";
 
+  // Options:
+  // * prompt: html string to use as prompt
+  // * resultPrompt: html string before each result
+  // * loop: function to handle eval and logging of its result,
+  //     default is $.repl.loop
+  // * spinner: location of spinner image
   $.fn.repl = function(options) {
     options = $.extend({
       prompt: '&gt;&gt; ',
@@ -51,7 +57,7 @@
     },
     logResult: function(str) {
       $('#'+spinner_id).remove();
-      $.repl.log(str);
+      return $.repl.log(str);
     },
     eval: function(input) {
       try { var result = eval(input); }
@@ -66,7 +72,7 @@
     },
     loop: function(line) {
       var result = resultPrompt + $.repl.eval(line);
-      $.repl.logResult(result);
+      return $.repl.logResult(result);
     }
   };
 })(jQuery);
