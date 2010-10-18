@@ -5,7 +5,6 @@
 
   $.fn.repl = function(options) {
     options = $.extend({
-      screen: '#screen',
       prompt: '&gt;&gt; ',
       resultPrompt: '=> ',
       loop: $.repl.loop,
@@ -14,17 +13,20 @@
 
     input = $(this);
     input.addClass('repl_input');
-    screen = $(options.screen);
     resultPrompt = options.resultPrompt;
-    spinner_id = (this.selector + '_spinner').replace('#', '');
+    var input_id = this.selector.replace(/^#/, '');
+    spinner_id = input_id + '_spinner';
     spinner = spinner.replace('%s', spinner_id);
     spinner = spinner.replace('%i', options.spinner);
 
-    var prompt_id = (this.selector + '_prompt').replace('#', '');
-    if (!$(prompt_id).length) {
+    var prompt_id = input_id + '_prompt';
+    if (!$('#'+prompt_id).length) {
       input.before('<span id="'+prompt_id+'"></span>');
     }
-    $('#'+prompt_id).html(options.prompt);
+    var screen_id = input_id + '_screen';
+    $('#'+prompt_id).html(options.prompt).
+      before("<div id='"+ screen_id +"'></div>");
+    screen = $('#'+screen_id);
 
     input.focus();
     input.parent('form').submit(function() {
