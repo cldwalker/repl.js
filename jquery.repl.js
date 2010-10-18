@@ -9,12 +9,16 @@
   // * loop: function to handle eval and logging of its result,
   //     default is $.repl.loop
   // * spinner: location of spinner image
+  // * startMessage: function which returns string to display when starting repl
   $.fn.repl = function(options) {
     options = $.extend({
       prompt: '&gt;&gt; ',
       resultPrompt: '=> ',
       loop: $.repl.loop,
-      spinner: 'spinner.gif'
+      spinner: 'spinner.gif',
+      startMessage:  function() {
+        return '# New repl.js session using jQuery '+$().jquery;
+      }
     }, options);
 
     input = $(this);
@@ -34,6 +38,7 @@
       before("<div id='"+ screen_id +"'></div>");
     screen = $('#'+screen_id);
 
+    $.repl.log(options.startMessage());
     input.focus();
     input.parent('form').submit(function() {
       var line = input.val();
