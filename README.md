@@ -5,19 +5,20 @@ repl by default. Goal is to mimic a commandline shell while providing html/js en
 
 Setup
 =====
-* Add css and javascript tags
+
+Add css and javascript tags
 
     <link href='jquery.repl.css' rel='stylesheet' type='text/css'>
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js' type='text/javascript'></script>
     <script src='jquery.repl.js' type='text/javascript'></script>
 
-* Assuming you have an input tag with id #input (wrapped in a form of course):
+Assuming you have an input tag with id #input (wrapped in a form of course):
 
     <script type='text/javascript'>
       $(document).ready( function(){ $('#input').repl() });
     </script>
 
-* For options to pass to $.fn.repl(), see documentation in the source.
+For options to pass to $.fn.repl(), see documentation in the source.
 
 Features
 ========
@@ -34,7 +35,7 @@ For a more advanced example, see jrepl.
 
 Credits
 =======
-Original css and some js from [brirb](http://github.com/rkh/brirb).
+Original css and some js from [rkh's brirb](http://github.com/rkh/brirb).
 
 Todo
 ====
