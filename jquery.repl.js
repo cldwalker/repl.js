@@ -38,7 +38,7 @@
       before("<div id='"+ screen_id +"'></div>");
     screen = $('#'+screen_id);
 
-    $.repl.log(options.startMessage());
+    if (options.startMessage) { $.repl.log(options.startMessage()); }
     input.focus();
     input.parent('form').submit(function() {
       var line = input.val();
