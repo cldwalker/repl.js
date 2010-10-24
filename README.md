@@ -26,7 +26,6 @@ Features
   repl prompt.
 * Autoscrolls on long output to keep repl prompt visible (tested on Chrome only).
 * Displays spinner while commands are executing (handy for long execution).
-* Multiple repls (in different forms) can exist on the same page.
 
 Demo
 ====
